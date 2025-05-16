@@ -33,3 +33,17 @@ Fri, May 16, 2025  4:27:37 PM:
  1 file changed, 13 insertions(+)
  tests:  0|0
 0ce2565
+Fri, May 16, 2025  4:29:29 PM: 
+ sudoku.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+Compilation failed
+test.c: In function 'test_dfs':
+test.c:206:19: error: implicit declaration of function 'DFS' [-Werror=implicit-function-declaration]
+     Node* final = DFS(initial, &cont);
+                   ^~~
+test.c:206:19: error: initialization makes pointer from integer without a cast [-Werror=int-conversion]
+test.c:230:11: error: assignment makes pointer from integer without a cast [-Werror=int-conversion]
+     final = DFS(initial, &cont);
+           ^
+cc1.exe: all warnings being treated as errors
+56c00ae
