@@ -53,14 +53,11 @@ int is_valid(Node* n){
           if(n->sudo[i][k] == num && k != j) return 0;
         }
 
-        int fila_s = (i / 3) * 3;
-        int col_s = (j / 3) * 3;
-        for(int m = 0; m < 3; m++){
-          for(int h = 0; h < 3; h++){
-            int sub_i = fila_s + m;
-            int sub_j = col_s + h;
-            if(n->sudo[sub_i][sub_j] == num && (sub_i != i || sub_j != j)) return 0;
-          }
+        int k = (i / 3) * 3 + (j / 3);
+        for(int p = 0; p < 9; p++){
+          int check_i = 3*(k/3) + (p/3);
+          int check_j = 3*(k%3) + (p%3);
+          if(n->sudo[check_i][check_j] == num && (check_i != i || check_j != j)) return 0;
         }
       }
     }
@@ -77,7 +74,8 @@ List* get_adj_nodes(Node* n){
         for(int num = 1; num <= 9; num++){
           Node* aux = copy(n);
           aux->sudo[i][j] = num;
-          pushBack(list, aux);
+          if(is_valid(aux)) pushBack(list, aux);
+          else free(aux);
         }
         return list;
       }
