@@ -44,31 +44,41 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-
-    return 1;
+  for(int i = 0; i < 9; i++){
+    for(int j = 0; j < 9; j++){
+      if(n->sudo[i][j] > 0){
+        int num = n->sudo[i][j];
+        for(int k = 0; k < 9; k++){
+          if(n->sudo[k][j] == num && k != i) return 0;
+          if(n->sudo[i][k] == num && k != j) return 0;
+        }
+      }
+    }
+  }
+  return 1;
 }
 
 
 List* get_adj_nodes(Node* n){
-    List* list=createList();
-    for(int i = 0; i < 9; i++){
-      for(int j = 0; j < 9; j++){
-        if(n->sudo[i][j] == 0){
-          for(int num = 1; num <= 9; num++){
-            Node* aux = copy(n);
-            aux->sudo[i][j] = num;
-            pushBack(list, aux);
-          }
-          return list;
+  List* list=createList();
+  for(int i = 0; i < 9; i++){
+    for(int j = 0; j < 9; j++){
+      if(n->sudo[i][j] == 0){
+        for(int num = 1; num <= 9; num++){
+          Node* aux = copy(n);
+          aux->sudo[i][j] = num;
+          pushBack(list, aux);
         }
+        return list;
       }
     }
-    return list;
+  }
+  return list;
 }
 
 
 int is_final(Node* n){
-    return 0;
+  return 0;
 }
 
 Node* DFS(Node* initial, int* cont){
