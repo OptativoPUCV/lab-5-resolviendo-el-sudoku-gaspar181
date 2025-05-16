@@ -94,8 +94,8 @@ int is_final(Node* n){
   return 1;
 }
 
-/*Node* DFS(Node* initial, int* cont){
-  Stack* S = createStack();
+Node* DFS(Node* initial, int* cont){
+  /*Stack* S = createStack();
   push(S, initial);
   while(!is_empty(S)){
     Node* current = top(S);
@@ -108,9 +108,10 @@ int is_final(Node* n){
     while(nodo_adj != NULL) push(S, nodo_adj);
     free(current);
   }
+    */
   return NULL;
 }
-*/
+
 
 
 /*
