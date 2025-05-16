@@ -52,6 +52,16 @@ int is_valid(Node* n){
           if(n->sudo[k][j] == num && k != i) return 0;
           if(n->sudo[i][k] == num && k != j) return 0;
         }
+
+        int fila_s = (i / 3) * 3;
+        int col_s = (j / 3) * 3;
+        for(int m = 0; m < 3; m++){
+          for(int h = 0; h < 3; h++){
+            int sub_i = fila_s + m;
+            int sub_j = col_s + h;
+            if(n->sudo[sub_i][sub_j] == num && (sub_i != i || sub_j != j)) return 0;
+          }
+        }
       }
     }
   }
